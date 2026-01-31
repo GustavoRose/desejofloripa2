@@ -13,68 +13,73 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background relative">
       
-      {/* 1. BOTÃO FLUTUANTE (Essencial para Mobile) */}
+      {/* Background fixo com mais visibilidade */}
+      <div className="fixed inset-0 z-0">
+        <img
+          src={heroBg}
+          alt="Elegância e sofisticação"
+          className="w-full h-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/90 to-background" />
+      </div>
+
+      {/* BOTÃO FLUTUANTE WhatsApp */}
       <a 
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform animate-bounce-slow"
+        className="fixed bottom-4 right-4 z-50 bg-[#25D366] text-white p-3 md:p-4 rounded-full shadow-lg hover:scale-110 transition-transform animate-bounce-slow"
         aria-label="Falar no WhatsApp"
       >
-        <MessageCircle size={32} />
+        <MessageCircle size={28} className="md:w-8 md:h-8" />
       </a>
 
-      <main className="flex-1 relative flex flex-col items-center justify-center px-4 py-16 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroBg}
-            alt="Elegância e sofisticação"
-            className="w-full h-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
-        </div>
-
-        <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto space-y-8">
+      <main className="flex-1 relative z-10 flex flex-col items-center px-4 py-8 md:py-16">
+        <div className="flex flex-col items-center text-center w-full max-w-3xl mx-auto space-y-6 md:space-y-8">
+          
+          {/* Logo */}
           <img 
             src={logo} 
             alt="Cheiro de Rosa" 
-            className="h-16 md:h-24 w-auto animate-float"
+            className="h-14 md:h-24 w-auto animate-float"
           />
 
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-coral to-transparent" />
+          <div className="w-16 md:w-24 h-[1px] bg-gradient-to-r from-transparent via-coral to-transparent" />
 
-          {/* Headline mais agressiva para Conversão */}
-          <h1 className="font-display text-4xl md:text-7xl font-semibold text-foreground leading-tight tracking-wide">
+          {/* Headline otimizada para mobile */}
+          <h1 className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-semibold text-foreground leading-tight tracking-wide px-2">
             Sua Intimidade com <br />
             <span className="text-coral">Máxima Discrição</span>
           </h1>
 
-          {/* Subheadline com Gatilho de Localidade e Rapidez */}
-          <p className="font-body text-lg md:text-xl text-coral-light font-medium tracking-wide">
-            Entrega Expressa em toda Grande Florianópolis. <br className="hidden md:block" />
+          {/* Subheadline */}
+          <p className="font-body text-sm sm:text-base md:text-xl text-coral-light font-medium tracking-wide px-4">
+            Entrega Expressa em toda Grande Florianópolis. <br />
             Receba hoje mesmo, em embalagem 100% discreta.
           </p>
 
           {/* Cards de Benefícios */}
-          <div className="pt-4 w-full">
+          <div className="pt-2 md:pt-4 w-full px-2">
             <FeatureCards />
           </div>
 
           {/* Seção de Avaliações */}
-          <Testimonials />
+          <div className="w-full px-2">
+            <Testimonials />
+          </div>
 
-          {/* CTA Principal Reforçado */}
-          <div className="pt-8 flex flex-col items-center gap-4">
+          {/* CTA Principal */}
+          <div className="pt-4 md:pt-8 flex flex-col items-center gap-3 md:gap-4 w-full px-4">
             <WhatsAppButton phoneNumber="5548999999999" label="CHAMAR NO WHATSAPP AGORA" />
             
-            {/* Elemento de Confiança abaixo do botão */}
-            <div className="flex items-center gap-2 text-muted-foreground/80 text-sm">
-              <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+            {/* Elemento de Confiança */}
+            <div className="flex items-center gap-2 text-muted-foreground/80 text-xs md:text-sm">
+              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
               Especialistas online agora para te ajudar
             </div>
           </div>
 
-          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-coral to-transparent" />
+          <div className="w-12 md:w-16 h-[1px] bg-gradient-to-r from-transparent via-coral to-transparent" />
         </div>
       </main>
 
