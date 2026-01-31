@@ -1,26 +1,21 @@
 import { MessageCircle } from "lucide-react";
 
 interface WhatsAppButtonProps {
-  phoneNumber?: string;
+  phoneNumber: string;
   message?: string;
   label?: string;
 }
 
 const WhatsAppButton = ({ 
-  phoneNumber = "5548988048880", 
-  message = "Olá! Vim do Instagram e gostaria de saber mais sobre os produtos.", 
+  phoneNumber, 
+  message = "Olá! Vim pelo site e gostaria de um atendimento discreto.", 
   label = "Fale Conosco no WhatsApp" 
 }: WhatsAppButtonProps) => {
   
   const handleClick = () => {
-    // --- RASTREIO META PIXEL ---
+    // Rastreio seguro para o build não falhar
     if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'Contact', {
-        content_name: 'Botão WhatsApp Landing Page',
-        content_category: 'Atendimento Boutique',
-        value: 0.00,
-        currency: 'BRL'
-      });
+      (window as any).fbq('track', 'Contact');
     }
 
     const encodedMessage = encodeURIComponent(message);
@@ -30,17 +25,12 @@ const WhatsAppButton = ({
 
   return (
     <button
+      type="button"
       onClick={handleClick}
-      className="group relative inline-flex items-center gap-3 px-10 py-5 text-lg font-semibold 
-                 bg-[hsl(142_70%_40%)] text-foreground rounded-full
-                 transition-all duration-300 ease-out
-                 hover:scale-105 hover:bg-[hsl(142_70%_35%)]
-                 animate-pulse-glow
-                 shadow-[0_10px_40px_-10px_hsl(142_70%_40%/0.5)]
-                 cursor-pointer border-none"
+      className="group inline-flex items-center gap-3 px-10 py-5 text-lg font-semibold bg-[#25D366] text-white rounded-full transition-all hover:scale-105 shadow-xl cursor-pointer border-none w-full justify-center"
     >
-      <MessageCircle className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
-      <span className="font-body tracking-wide">{label}</span>
+      <MessageCircle className="w-6 h-6" />
+      <span>{label}</span>
     </button>
   );
 };
